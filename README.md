@@ -26,24 +26,29 @@ Debayers images in a directory.
 optional arguments:
   -h, --help            show this help message and exit
   -i DIR, --input_dir DIR
-                        the directory to process
+                        the directory to process (default: None)
   -I EXT, --input_ext EXT
                         the extension to look for in the input directory
-  -r, --recursive       whether to look for images recursively
+                        (default: bmp)
+  -r, --recursive       whether to look for images recursively (default:
+                        False)
   -o DIR, --output_dir DIR
                         the directory to store the debayered images in;
                         performs in-place debayering if not specified
+                        (default: None)
   -O EXT, --output_ext EXT
                         the extension to use for the generated images
+                        (default: jpg)
   -c PROFILE, --color_profile PROFILE
                         the OpenCV color profile to use for debayering
-                        (cv2.COLOR_BAYER_*)
+                        (cv2.COLOR_BAYER_*) (default: COLOR_BAYER_BG2BGR)
   -p NUM, --progress_interval NUM
                         the interval of processed images to output progress
-                        information in the console
-  -v, --verbose         whether to be more verbose in the output
+                        information in the console (default: 100)
+  -v, --verbose         whether to output directories being processed
+                        (default: False)
   -n, --dry_run         whether to perform a dry-run; --verbose should be used
-                        in conjunction with this flag
+                        in conjunction with this flag (default: False)
 ```
 
 ### Python

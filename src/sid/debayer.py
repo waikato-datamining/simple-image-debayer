@@ -112,7 +112,8 @@ def main(args=None):
 
     parser = argparse.ArgumentParser(
         description='Debayers images in a directory.',
-        prog="sid-debayer")
+        prog="sid-debayer",
+        formatter_class=argparse.ArgumentDefaultsHelpFormatter)
     parser.add_argument("-i", "--input_dir", dest="input_dir", metavar="DIR", required=True, help="the directory to process")
     parser.add_argument("-I", "--input_ext", dest="input_ext", metavar="EXT", required=False, default="bmp", help="the extension to look for in the input directory")
     parser.add_argument("-r", "--recursive", action="store_true", dest="recursive", help="whether to look for images recursively")
