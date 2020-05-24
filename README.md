@@ -1,6 +1,10 @@
 # simple-image-debayer
 Simple library for debayering images with OpenCV.
 
+See the Wikipedia article on the [Bayer filter](https://en.wikipedia.org/wiki/Bayer_filter)
+for more information.
+
+
 ## Installation
 
 ```commandline
