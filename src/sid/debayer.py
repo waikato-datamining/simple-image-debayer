@@ -1,4 +1,5 @@
 import argparse
+import datetime
 import os
 import cv2
 import traceback
@@ -20,6 +21,25 @@ def check_params(input_dir, output_dir, color_profile):
     if output_dir is not None:
         if not os.path.exists(output_dir) or not os.path.isdir(output_dir):
             raise Exception("Output directory '%s' does not exist or not a directory!" % input_dir)
+
+
+def calculate_remaining_time(start, processed, total):
+    """
+    Generates the number of seconds the processing will still take.
+
+    :param start: the start time
+    :type start: datetime.dateime
+    :param processed: the number of images processed so far
+    :type processed: int
+    :param total: the total number of images to process
+    :type total: int
+    :return: the time still left for finishing the remainder of the files
+    :rtype: datetime.timedelta
+    """
+
+    now = datetime.datetime.now()
+    per_image = (now - start) / processed
+    return (total - processed) * per_image
 
 
 def debayer_image(input, output, color_profile):
@@ -86,6 +106,7 @@ def debayer(input_dir, input_ext="bmp", output_dir=None, output_ext="jpg", recur
     print("Total images to debayer: %d" % total)
 
     # convert images
+    start = datetime.datetime.now()
     current = 0
     for dir in directories:
         files = [x for x in os.listdir(dir) if x.endswith("." + input_ext)]
@@ -101,7 +122,7 @@ def debayer(input_dir, input_ext="bmp", output_dir=None, output_ext="jpg", recur
             if not dry_run:
                 debayer_image(infile, outfile, profile)
             if current % progress_interval == 0:
-                print("Progress: %d / %d" % (current, total))
+                print("Progress: %d / %d - ETA %s" % (current, total, str(calculate_remaining_time(start, current, total))))
 
 
 def main(args=None):

@@ -1,6 +1,12 @@
 Changelog
 =========
 
+0.0.3 (2020-05-25)
+------------------
+
+- outputting now the time left for processing the remainder of the images as well
+
+
 0.0.2 (2020-05-25)
 ------------------
 
