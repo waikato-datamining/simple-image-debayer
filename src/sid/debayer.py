@@ -94,7 +94,10 @@ def debayer(input_dir, input_ext="bmp", output_dir=None, output_ext="jpg", recur
         for f in files:
             current += 1
             infile = os.path.join(dir, f)
-            outfile = os.path.join(dir, f.replace("." + input_ext, "." + output_ext))
+            if output_dir is None:
+                outfile = os.path.join(dir, f.replace("." + input_ext, "." + output_ext))
+            else:
+                outfile = os.path.join(output_dir, f.replace("." + input_ext, "." + output_ext))
             if not dry_run:
                 debayer_image(infile, outfile, profile)
             if current % progress_interval == 0:
