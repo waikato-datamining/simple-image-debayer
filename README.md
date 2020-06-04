@@ -19,7 +19,7 @@ You can use the `sid-debayer` command-line tool for debayering directories:
 
 ```
 usage: sid-debayer [-h] -i DIR [-I EXT] [-r] [-o DIR] [-O EXT] [-c PROFILE]
-                   [-p NUM] [-v] [-n]
+                   [-p NUM] [-e] [-d] [-v] [-n]
 
 Debayers images in a directory.
 
@@ -45,6 +45,10 @@ optional arguments:
   -p NUM, --progress_interval NUM
                         the interval of processed images to output progress
                         information in the console (default: 100)
+  -e, --ignore_errors   whether to ignore any errors and keep debayering
+                        (default: False)
+  -d, --delete          whether to delete the input file after successfully
+                        debayering it (default: False)
   -v, --verbose         whether to output directories being processed
                         (default: False)
   -n, --dry_run         whether to perform a dry-run; --verbose should be used
@@ -53,9 +57,14 @@ optional arguments:
 
 ### Python
 
-Of course, the library can be used as a Python library as well.
+Of course, the tool can be used as a Python library as well.
 
-The module `sid.debayer` contains the following methods:
+The module `sid.debayer` contains the following methods among others:
 
-* `debayer` - for debayering a directory
-* `debayer_image` - for debayering a single image
+* `debayer_dir` - for debayering a directory (that is the main routine)
+* `debayer_file` - for debayering a single file
+* `debayer_image` - for debayering an in-memory image (in/out: `ndarray`)
+* `read_image` - reads a bayered image into memory (out: `ndarray`)
+* `write_image` - writes a debayered image to disk (in: `ndarray`)
+* `eval_color_profile` - turns the color profile string (e.g., `COLOR_BAYER_BG2BGR`) into an integer constant 
+  (e.g., `cv2.COLOR_BAYER_BG2BGR`)
