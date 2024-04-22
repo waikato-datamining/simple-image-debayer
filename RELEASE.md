@@ -25,7 +25,7 @@ Steps:
 
 * start new release (version: `vX.Y.Z`)
 * enter release notes, i.e., significant changes since last release
-* upload `simple-image-debayer-X.Y.Z.tar.gz` previously generated with `setyp.py`
+* upload `simple-image-debayer-X.Y.Z.tar.gz` previously generated with `setup.py`
 * publish
 
 
