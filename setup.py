@@ -16,7 +16,7 @@ def _read(f):
 
 
 setup(
-    name="simple-image-debayer",
+    name="simple_image_debayer",
     description="Python3 library for debayering images using OpenCV.",
     long_description=(
         _read('DESCRIPTION.rst') + b'\n' +

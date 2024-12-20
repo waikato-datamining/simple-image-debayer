@@ -1,6 +1,12 @@
 Changelog
 =========
 
+0.0.5 (????-??-??)
+------------------
+
+- switched to underscores in project name
+
+
 0.0.4 (2020-06-04)
 ------------------
 
