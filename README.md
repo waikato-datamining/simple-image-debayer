@@ -8,7 +8,7 @@ for more information.
 ## Installation
 
 ```commandline
-pip install simple-image-debayer
+pip install simple_image_debayer
 ```
 
 ## Usage
